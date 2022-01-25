@@ -31,7 +31,7 @@
           this.notes.push(note);
         },
         deleteNote(index) {
-          this.notes.splice(index)
+          this.notes.splice(index,1)
         }
       }
     }
