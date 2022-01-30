@@ -1,39 +1,48 @@
 <template>
     <div class="container">
-        <add-note @noteAdded="addNote"></add-note>
-        <note-grid :notes="notes" @noteDeleted="deleteNote"></note-grid>
-        <div class="row">
-          <div class="col-xs-12 text-center">
-              <div class="alert alert-info">
-                Info: click on a Note to delete it !
-              </div>
-          </div>
-        </div>
+       <div class="row">
+       <div class="col-md-6 col-lg-offset-3 ">
+           <div class="title">contact info</div>
+
+         <div class="form-group">
+           <div class="form-label">Name</div>
+           <input type="text" v-model="user.name" class="form-control">
+         </div>
+
+         <div class="form-group">
+           <div class="form-label">Email</div>
+           <input type="email" v-model="user.email" class="form-control">
+         </div>
+
+         <div class="form-group">
+           <div class="form-label">Phone number</div>
+           <input type="number" v-model="user.phone" class="form-control">
+         </div>
+
+         <div class="form-group">
+           <button class="btn btn-primary" @click="dataLog">submit</button>
+         </div>
+       </div>
+       </div>
     </div>
 </template>
 
 <script>
-    import NoteGrid from "./components/NoteGrid.vue";
-    import AddNote from './components/AddNote.vue'
     export default {
       data() {
         return {
-          notes: ['vue js is annoying'],
-          maxNotes: 10
-        }
-      },
-      components: {
-        NoteGrid,
-        AddNote
+          user : {
+            name: '',
+            email: '',
+            phone: ''
+          }
+          }
       },
       methods:{
-        addNote(note) {
-          this.notes.push(note);
-        },
-        deleteNote(index) {
-          this.notes.splice(index,1)
+          dataLog() {
+            console.log(this.user)
+          }
         }
-      }
     }
 </script>
 
